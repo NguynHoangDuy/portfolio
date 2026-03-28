@@ -34,7 +34,7 @@ export function Navbar() {
             </Link>
           ))}
           <Link
-            href="/portfolio/resume.pdf"
+            href="/resume.pdf"
             target="_blank"
             className="text-sm font-medium text-muted hover:text-foreground transition-colors"
           >
@@ -88,7 +88,7 @@ export function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link href="/portfolio/resume.pdf" target="_blank" onClick={() => setIsOpen(false)} className="font-medium text-foreground">
+          <Link href="/resume.pdf" target="_blank" onClick={() => setIsOpen(false)} className="font-medium text-foreground">
             Resume
           </Link>
           <Link
