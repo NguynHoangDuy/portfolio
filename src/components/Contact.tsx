@@ -1,40 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail } from "lucide-react";
 import Link from "next/link";
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
-    
     const formData = new FormData(e.currentTarget);
-    const data = {
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-      if (res.ok) {
-        setStatus("success");
-        (e.target as HTMLFormElement).reset();
-        setTimeout(() => setStatus("idle"), 5000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
-      }
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
-    }
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+    const mailto = `mailto:nguyenhoangduy933@gmail.com?subject=Contact from ${encodeURIComponent(email)}&body=${encodeURIComponent(message)}`;
+    window.location.href = mailto;
   }
 
   return (
@@ -91,37 +68,12 @@ export function Contact() {
               />
             </div>
 
-            <button 
+            <button
               type="submit"
-              disabled={status === "loading" || status === "success"}
-              className="w-full bg-gray-900 text-white font-bold tracking-widest text-sm py-4 rounded-lg flex items-center justify-center gap-3 transition-colors disabled:opacity-80 hover:bg-black overflow-hidden relative"
+              className="w-full bg-gray-900 text-white font-bold tracking-widest text-sm py-4 rounded-lg flex items-center justify-center gap-3 transition-colors hover:bg-black"
             >
-              <AnimatePresence mode="wait">
-                {status === "idle" && (
-                  <motion.div key="idle" className="flex items-center gap-2" initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} exit={{opacity:0, y:-10}}>
-                    <Mail size={18} />
-                    TRANSMIT
-                  </motion.div>
-                )}
-                {status === "loading" && (
-                  <motion.div key="loading" className="flex items-center gap-2 text-blue-300" initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} exit={{opacity:0, y:-10}}>
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                    TRANSMITTING...
-                  </motion.div>
-                )}
-                {status === "success" && (
-                  <motion.div key="success" className="flex items-center gap-2 text-green-400" initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} exit={{opacity:0, y:-10}}>
-                    <CheckCircle2 size={18} />
-                    MESSAGE DELIVERED
-                  </motion.div>
-                )}
-                {status === "error" && (
-                  <motion.div key="error" className="flex items-center gap-2 text-red-400" initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} exit={{opacity:0, y:-10}}>
-                    <AlertCircle size={18} />
-                    CONNECTION FAILED
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <Mail size={18} />
+              SEND EMAIL
             </button>
           </form>
         </motion.div>
