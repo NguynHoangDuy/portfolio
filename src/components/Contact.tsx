@@ -151,7 +151,7 @@ export function Contact() {
             <Link href="https://nguynhoangduy.github.io/portfolio/" className="hover:text-primary transition-colors">PORTFOLIO</Link>
             <Link href="/portfolio/resume.pdf" target="_blank" className="hover:text-primary transition-colors">RESUME</Link>
           </div>
-          <div className="text-gray-400 text-sm font-medium">
+          <div className="text-gray-400 text-sm font-medium" suppressHydrationWarning>
             © {new Date().getFullYear()} NGUYEN HOANG DUY.
           </div>
         </div>
