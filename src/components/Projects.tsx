@@ -7,6 +7,8 @@ const projects = [
     title: "ListenLayer",
     subtitle: "User Behavior Analytics Platform",
     period: "05/2023 — 03/2026",
+    logo: "/portfolio/listenlayer-logo.svg",
+    url: "https://listenlayer.com",
     description: "Large-scale platform at Screen 1 Technology that helps marketers manage and standardize marketing data, eliminate data inconsistencies, and connect data to revenue. Developed responsive UI with React.js, built RESTful APIs with Node.js, implemented real-time data collection and processing, optimized performance with Redis caching and async queue services, and processed large-scale data using BigQuery and PostgreSQL. Developed serverless data pipelines with Cloud Functions and AWS Lambda.",
     tags: ["REACT.JS", "NODE.JS", "BIGQUERY", "POSTGRESQL", "REDIS", "AWS LAMBDA", "CLOUD FUNCTIONS"],
   },
@@ -56,29 +58,15 @@ export function Projects() {
               transition={{ duration: 0.7 }}
             >
               {/* Image / Visual side */}
-              <div className="w-full lg:w-3/5 rounded-2xl overflow-hidden bg-gray-900 aspect-[4/3] relative group shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <div className="w-full h-full opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/40 via-transparent to-transparent"></div>
-                  
-                  {/* Abstract technical UI placeholder */}
-                  <div className="absolute inset-8 border border-white/10 rounded-lg flex flex-col p-6 overflow-hidden">
-                    <div className="w-full flex justify-between items-center mb-6">
-                      <div className="flex gap-2">
-                        <div className="w-2 h-2 rounded-full bg-red-400"></div>
-                        <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                      </div>
-                      <span className="font-mono text-[10px] text-gray-500 tracking-wider">SYS.RENDER.0{index+1}</span>
-                    </div>
-                    <div className="flex-1 border border-white/5 rounded relative overflow-hidden flex items-center justify-center">
-                         {/* Circle rings */}
-                         <div className="absolute w-64 h-64 rounded-full border border-primary/20 animate-[spin_10s_linear_infinite]"></div>
-                         <div className="absolute w-48 h-48 rounded-full border border-primary/40 animate-[spin_8s_linear_infinite_reverse] border-dashed"></div>
-                         <div className="absolute w-32 h-32 rounded-full border border-primary/60 border-dotted animate-[spin_6s_linear_infinite]"></div>
-                         <div className="w-4 h-4 rounded-full bg-primary/80 shadow-[0_0_15px_rgba(59,130,246,0.6)]"></div>
-                    </div>
-                  </div>
-                </div>
+              <div className="w-full lg:w-3/5 rounded-2xl overflow-hidden aspect-[4/3] relative group shadow-2xl bg-white border border-gray-100 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
+                {"logo" in project && (
+                  <img
+                    src={(project as { logo: string }).logo}
+                    alt={project.title}
+                    className="relative z-10 w-2/3 max-w-xs"
+                  />
+                )}
               </div>
 
               {/* Content side */}
@@ -96,10 +84,17 @@ export function Projects() {
                 <p className="text-gray-600 leading-relaxed text-lg mb-8">
                   {project.description}
                 </p>
-                <button className="self-start text-primary font-bold tracking-widest text-sm hover:text-primary-dark transition-colors flex items-center gap-2 group">
-                  VIEW CASE STUDY
-                  <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                {"url" in project && (
+                  <a
+                    href={(project as { url: string }).url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="self-start text-primary font-bold tracking-widest text-sm hover:text-primary-dark transition-colors flex items-center gap-2 group"
+                  >
+                    VISIT SITE
+                    <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
