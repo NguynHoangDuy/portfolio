@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, CheckCircle2, AlertCircle, Github, ExternalLink, FileText } from "lucide-react";
 import Link from "next/link";
-
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -46,119 +45,162 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-6 bg-white relative">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-16">
+    <section id="contact" className="py-20 px-6 bg-background">
+      <div className="max-w-7xl mx-auto">
+
+        <div className="mb-12">
+          <motion.p
+            className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            Get in touch
+          </motion.p>
           <motion.h2
-            className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-black tracking-tight text-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            INITIATE <br className="hidden md:block" />
-            <span className="text-gray-400">CONNECTION.</span>
+            Contact
           </motion.h2>
         </div>
 
-        <motion.div
-          className="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm relative overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0" />
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
-          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-xs font-bold tracking-widest text-primary uppercase">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                  placeholder="Your name"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-xs font-bold tracking-widest text-primary uppercase">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                  placeholder="you@example.com"
-                />
+          {/* Left — info */}
+          <motion.div
+            className="lg:col-span-2 flex flex-col justify-between gap-8"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div>
+              <p className="text-muted leading-relaxed mb-8">
+                I'm open to new opportunities and collaborations. Feel free to reach out — I'll get back to you as soon as possible.
+              </p>
+              <div className="space-y-3">
+                <a href="mailto:nguyenhoangduy933@gmail.com" className="flex items-center gap-3 text-sm text-muted hover:text-primary transition-colors group">
+                  <div className="w-8 h-8 rounded-lg bg-surface border border-border-base flex items-center justify-center group-hover:border-primary/50 transition-colors">
+                    <Mail size={14} className="text-primary" />
+                  </div>
+                  nguyenhoangduy933@gmail.com
+                </a>
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-xs font-bold tracking-widest text-primary uppercase">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={5}
-                className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
-                placeholder="Tell me about your project..."
-              />
+            <div className="flex gap-3">
+              <a
+                href="https://github.com/nguynhoangduy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-base bg-surface hover:bg-surface-2 text-sm font-semibold text-foreground transition-colors"
+              >
+                <Github size={15} /> GitHub
+              </a>
+              <a
+                href="https://nguynhoangduy.github.io/portfolio/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-base bg-surface hover:bg-surface-2 text-sm font-semibold text-foreground transition-colors"
+              >
+                <ExternalLink size={15} /> Portfolio
+              </a>
+              <a
+                href="/portfolio/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-base bg-surface hover:bg-surface-2 text-sm font-semibold text-foreground transition-colors"
+              >
+                <FileText size={15} /> Resume
+              </a>
             </div>
+          </motion.div>
 
-            <button
-              type="submit"
-              disabled={status === "loading" || status === "success"}
-              className="w-full bg-gray-900 text-white font-bold tracking-widest text-sm py-4 rounded-lg flex items-center justify-center gap-3 transition-colors disabled:opacity-70 hover:bg-black overflow-hidden"
+          {/* Right — form */}
+          <motion.div
+            className="lg:col-span-3"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="bg-surface border border-border-base rounded-2xl p-6 md:p-8 space-y-5"
             >
-              <AnimatePresence mode="wait">
-                {status === "idle" && (
-                  <motion.span key="idle" className="flex items-center gap-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-                    <Mail size={16} /> SEND MESSAGE
-                  </motion.span>
-                )}
-                {status === "loading" && (
-                  <motion.span key="loading" className="flex items-center gap-2 text-blue-300" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                    SENDING...
-                  </motion.span>
-                )}
-                {status === "success" && (
-                  <motion.span key="success" className="flex items-center gap-2 text-green-400" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-                    <CheckCircle2 size={16} /> MESSAGE SENT
-                  </motion.span>
-                )}
-                {status === "error" && (
-                  <motion.span key="error" className="flex items-center gap-2 text-red-400" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
-                    <AlertCircle size={16} /> FAILED — TRY AGAIN
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
-          </form>
-        </motion.div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="text-xs font-bold tracking-widest text-muted uppercase">Name</label>
+                  <input
+                    id="name" name="name" type="text" required
+                    className="w-full bg-background border border-border-base rounded-lg px-4 py-3 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="text-xs font-bold tracking-widest text-muted uppercase">Email</label>
+                  <input
+                    id="email" name="email" type="email" required
+                    className="w-full bg-background border border-border-base rounded-lg px-4 py-3 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="text-xs font-bold tracking-widest text-muted uppercase">Message</label>
+                <textarea
+                  id="message" name="message" required rows={5}
+                  className="w-full bg-background border border-border-base rounded-lg px-4 py-3 text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all text-sm resize-none"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "loading" || status === "success"}
+                className="w-full bg-primary hover:bg-primary-dark text-white font-bold text-sm py-3.5 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-60 overflow-hidden"
+              >
+                <AnimatePresence mode="wait">
+                  {status === "idle" && (
+                    <motion.span key="idle" className="flex items-center gap-2" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
+                      <Mail size={15} /> Send Message
+                    </motion.span>
+                  )}
+                  {status === "loading" && (
+                    <motion.span key="loading" className="flex items-center gap-2" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
+                      <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" /> Sending...
+                    </motion.span>
+                  )}
+                  {status === "success" && (
+                    <motion.span key="success" className="flex items-center gap-2" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
+                      <CheckCircle2 size={15} /> Message Sent!
+                    </motion.span>
+                  )}
+                  {status === "error" && (
+                    <motion.span key="error" className="flex items-center gap-2" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}>
+                      <AlertCircle size={15} /> Failed — Try Again
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            </form>
+          </motion.div>
+
+        </div>
 
         {/* Footer */}
-        <div className="mt-32 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-gray-900 font-bold tracking-tight text-lg">
-            NGUYEN HOANG DUY
-          </div>
-          <div className="flex gap-8 text-sm font-bold tracking-widest text-gray-500">
-            <Link href="https://github.com/nguynhoangduy" className="hover:text-primary transition-colors">GITHUB</Link>
-            <Link href="https://nguynhoangduy.github.io/portfolio/" className="hover:text-primary transition-colors">PORTFOLIO</Link>
-            <Link href="/portfolio/resume.pdf" target="_blank" className="hover:text-primary transition-colors">RESUME</Link>
-          </div>
-          <div className="text-gray-400 text-sm font-medium" suppressHydrationWarning>
-            © {new Date().getFullYear()} NGUYEN HOANG DUY.
-          </div>
+        <div className="mt-24 pt-8 border-t border-border-base flex flex-col md:flex-row justify-between items-center gap-4">
+          <span className="font-black text-base text-foreground tracking-tight">NHD.DEV</span>
+          <span className="text-muted text-sm" suppressHydrationWarning>
+            © {new Date().getFullYear()} Nguyen Hoang Duy. All rights reserved.
+          </span>
         </div>
+
       </div>
     </section>
   );

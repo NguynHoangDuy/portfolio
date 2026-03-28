@@ -2,56 +2,112 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { MapPin, Mail, Phone, Github, ExternalLink } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex flex-col items-center justify-center px-6 overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-blue-500/5 rounded-full blur-3xl -z-10" />
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-6 overflow-hidden">
+      {/* Background blobs */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
+      </div>
 
-      <div className="max-w-5xl mx-auto text-center pt-10">
+      <div className="max-w-4xl mx-auto w-full">
+        {/* Badge */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border-base bg-surface text-muted text-xs font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Available for work
+          </span>
+        </motion.div>
+
+        {/* Name */}
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-gray-900 mb-8 leading-[1.1]"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground text-center mb-6 leading-[1.05]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         >
-          NGUYEN <br className="hidden sm:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500">
-            HOANG DUY
+          Nguyen{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-dark">
+            Hoang Duy
           </span>
         </motion.h1>
 
+        {/* Title */}
         <motion.p
-          className="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
+          className="text-center text-xl md:text-2xl font-semibold text-muted mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Software Engineer with ~3 years of full-stack experience. Building responsive UIs with React.js and scalable APIs with Node.js, backed by AWS and Google Cloud.
+          Software Engineer — Full Stack
         </motion.p>
 
+        {/* Bio */}
+        <motion.p
+          className="text-center text-base md:text-lg text-muted max-w-2xl mx-auto mb-10 leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          ~3 years building full-stack products with React.js and Node.js.
+          Experienced in cloud platforms (AWS, Google Cloud) and async systems (Redis, RabbitMQ).
+        </motion.p>
+
+        {/* Contact info */}
         <motion.div
-          className="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-10"
+          className="flex flex-wrap justify-center gap-4 text-sm text-muted mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <span>Nha Trang, Khánh Hòa</span>
-          <a href="mailto:nguyenhoangduy933@gmail.com" className="hover:text-primary transition-colors">nguyenhoangduy933@gmail.com</a>
-          <a href="tel:0369454037" className="hover:text-primary transition-colors">0369 454 037</a>
+          <span className="flex items-center gap-1.5">
+            <MapPin size={14} className="text-primary" /> Nha Trang, Khánh Hòa
+          </span>
+          <a href="mailto:nguyenhoangduy933@gmail.com" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+            <Mail size={14} className="text-primary" /> nguyenhoangduy933@gmail.com
+          </a>
+          <a href="tel:0369454037" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+            <Phone size={14} className="text-primary" /> 0369 454 037
+          </a>
         </motion.div>
 
+        {/* CTA buttons */}
         <motion.div
+          className="flex flex-wrap justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <Link
             href="#projects"
-            className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold tracking-widest text-white bg-primary hover:bg-primary-dark rounded transition-all shadow-lg hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-7 py-3 bg-primary hover:bg-primary-dark text-white text-sm font-bold rounded-lg transition-all shadow-lg shadow-primary/20 hover:-translate-y-0.5"
           >
-            VIEW SELECTED WORKS
+            View Projects
           </Link>
+          <a
+            href="https://github.com/nguynhoangduy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3 border border-border-base bg-surface hover:bg-surface-2 text-foreground text-sm font-bold rounded-lg transition-all hover:-translate-y-0.5"
+          >
+            <Github size={16} /> GitHub
+          </a>
+          <a
+            href="https://nguynhoangduy.github.io/portfolio/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3 border border-border-base bg-surface hover:bg-surface-2 text-foreground text-sm font-bold rounded-lg transition-all hover:-translate-y-0.5"
+          >
+            <ExternalLink size={16} /> Portfolio
+          </a>
         </motion.div>
       </div>
     </section>

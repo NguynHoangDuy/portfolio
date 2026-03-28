@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -25,102 +26,92 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-white">
+    <section id="projects" className="py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="mb-16">
-          <motion.span
-            className="text-primary font-bold tracking-[0.2em] text-sm uppercase mb-4 block"
+        <div className="mb-12">
+          <motion.p
+            className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             Portfolio
-          </motion.span>
+          </motion.p>
           <motion.h2
-            className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900"
+            className="text-4xl md:text-5xl font-black tracking-tight text-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            SELECTED<br />PROJECTS
+            Selected Projects
           </motion.h2>
         </div>
 
-        {/* Project cards */}
-        <div className="space-y-12">
+        <div className="space-y-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
-              initial={{ opacity: 0, y: 40 }}
+              className="rounded-2xl border border-border-base overflow-hidden hover:border-primary/40 transition-colors duration-300"
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              {/* Top bar */}
-              <div className="bg-gray-900 px-6 py-4 flex items-center justify-between">
+              {/* Browser bar */}
+              <div className="bg-surface-2 border-b border-border-base px-5 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/70" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
                   </div>
-                  <span className="text-gray-500 font-mono text-xs tracking-wider hidden sm:block">
-                    listenlayer.com
-                  </span>
+                  <span className="font-mono text-xs text-muted hidden sm:block">listenlayer.com</span>
                 </div>
-                <span className="text-gray-600 font-mono text-xs tracking-widest">
-                  {project.period}
-                </span>
+                <span className="font-mono text-xs text-muted">{project.period}</span>
               </div>
 
-              {/* Body */}
+              {/* Content grid */}
               <div className="grid grid-cols-1 lg:grid-cols-5">
 
-                {/* Left — logo + meta */}
-                <div className="lg:col-span-2 bg-gray-50 border-b lg:border-b-0 lg:border-r border-gray-100 p-10 flex flex-col justify-between gap-8">
+                {/* Left panel */}
+                <div className="lg:col-span-2 bg-white dark:bg-surface border-b lg:border-b-0 lg:border-r border-border-base p-8 flex flex-col justify-between gap-8">
                   <div>
                     <img
                       src={project.logo}
                       alt={project.title}
-                      className="h-8 mb-6"
+                      className="h-7 mb-5 dark:brightness-0 dark:invert dark:opacity-80"
                     />
-                    <p className="text-primary text-sm font-semibold mb-1">{project.subtitle}</p>
-                    <p className="text-gray-600 leading-relaxed text-sm mt-4">
-                      {project.description}
-                    </p>
+                    <p className="text-primary text-xs font-bold tracking-widest uppercase mb-3">{project.subtitle}</p>
+                    <p className="text-muted text-sm leading-relaxed">{project.description}</p>
                   </div>
-
                   <a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-primary hover:text-primary-dark transition-colors group self-start"
                   >
-                    VISIT SITE
-                    <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    <ExternalLink size={13} /> VISIT SITE
                   </a>
                 </div>
 
-                {/* Right — bullets + stack */}
-                <div className="lg:col-span-3 p-10 flex flex-col justify-between gap-8">
+                {/* Right panel */}
+                <div className="lg:col-span-3 bg-background p-8 flex flex-col justify-between gap-8">
                   <ul className="space-y-3">
                     {project.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-gray-600 text-sm leading-relaxed">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <li key={b} className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                        <span className="mt-2 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
                         {b}
                       </li>
                     ))}
                   </ul>
-
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold tracking-widest"
+                        className="px-2.5 py-1 bg-surface-2 border border-border-base text-muted rounded-md text-[10px] font-bold tracking-widest"
                       >
                         {tag}
                       </span>
@@ -132,7 +123,6 @@ export function Projects() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
