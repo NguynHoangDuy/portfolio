@@ -5,9 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
-// Get your free access key at https://web3forms.com
-// Enter nguyenhoangduy933@gmail.com → copy the key → set NEXT_PUBLIC_WEB3FORMS_KEY in .env.local
-const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -17,14 +14,21 @@ export function Contact() {
     setStatus("loading");
 
     const formData = new FormData(e.currentTarget);
-    formData.append("access_key", WEB3FORMS_KEY);
-    formData.append("to", "nguyenhoangduy933@gmail.com");
-    formData.append("subject", `Portfolio contact from ${formData.get("name") || formData.get("email")}`);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "1063ed79-18d7-43ce-9f39-ac026742aba7",
+          name,
+          email,
+          message,
+          subject: `Portfolio contact from ${name || email}`,
+        }),
       });
       const json = await res.json();
       if (json.success) {
