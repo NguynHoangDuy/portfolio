@@ -53,18 +53,24 @@ export function Experience() {
 
           {/* Work */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2 text-muted text-xs font-bold tracking-widest uppercase mb-6">
+            <motion.div
+              className="flex items-center gap-2 text-muted text-xs font-bold tracking-widest uppercase mb-6"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
               <Briefcase size={14} className="text-primary" /> Work
-            </div>
+            </motion.div>
 
             {workExperience.map((exp, index) => (
               <motion.div
                 key={exp.role}
-                className="bg-background border border-border-base rounded-xl p-6 hover:border-primary/40 transition-colors"
+                className="bg-background border border-border-base rounded-xl p-6"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ borderColor: "rgba(59,130,246,0.4)", boxShadow: "0 8px 24px -8px rgba(59,130,246,0.1)" }}
               >
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                   <div>
@@ -72,36 +78,57 @@ export function Experience() {
                     <p className="text-primary text-sm font-semibold">{exp.company}</p>
                     <p className="text-muted text-xs mt-0.5">{exp.location}</p>
                   </div>
-                  <span className="text-xs font-mono text-muted bg-surface-2 border border-border-base px-3 py-1 rounded-full whitespace-nowrap self-start">
+                  <motion.span
+                    className="text-xs font-mono text-muted bg-surface-2 border border-border-base px-3 py-1 rounded-full whitespace-nowrap self-start"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     {exp.period}
-                  </span>
+                  </motion.span>
                 </div>
                 <p className="text-muted text-sm leading-relaxed mb-4">{exp.description}</p>
-                <div className="flex flex-wrap gap-1.5">
+                <motion.div
+                  className="flex flex-wrap gap-1.5"
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
+                >
                   {exp.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] font-bold px-2 py-0.5 rounded bg-surface-2 text-muted border border-border-base tracking-widest">
+                    <motion.span
+                      key={tag}
+                      className="text-[10px] font-bold px-2 py-0.5 rounded bg-surface-2 text-muted border border-border-base tracking-widest cursor-default"
+                      variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1 } }}
+                      whileHover={{ scale: 1.1, color: "var(--primary)" }}
+                    >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
 
           {/* Education */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-muted text-xs font-bold tracking-widest uppercase mb-6">
+            <motion.div
+              className="flex items-center gap-2 text-muted text-xs font-bold tracking-widest uppercase mb-6"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
               <GraduationCap size={14} className="text-primary" /> Education
-            </div>
+            </motion.div>
 
             {education.map((edu, index) => (
               <motion.div
                 key={edu.degree}
-                className="bg-background border border-border-base rounded-xl p-6 hover:border-primary/40 transition-colors"
+                className="bg-background border border-border-base rounded-xl p-6"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.15 }}
+                whileHover={{ borderColor: "rgba(59,130,246,0.4)", boxShadow: "0 8px 24px -8px rgba(59,130,246,0.1)" }}
               >
                 <span className="text-xs font-mono text-muted bg-surface-2 border border-border-base px-3 py-1 rounded-full">
                   {edu.period}

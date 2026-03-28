@@ -29,7 +29,6 @@ export function Projects() {
     <section id="projects" className="py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
 
-        {/* Header */}
         <div className="mb-12">
           <motion.p
             className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3"
@@ -54,19 +53,24 @@ export function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              className="rounded-2xl border border-border-base overflow-hidden hover:border-primary/40 transition-colors duration-300"
-              initial={{ opacity: 0, y: 32 }}
+              className="rounded-2xl border border-border-base overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ boxShadow: "0 16px 48px -12px rgba(59,130,246,0.15)" }}
             >
               {/* Browser bar */}
               <div className="bg-surface-2 border-b border-border-base px-5 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+                    {["bg-red-400/80", "bg-yellow-400/80", "bg-green-400/80"].map((c, i) => (
+                      <motion.div
+                        key={i}
+                        className={`w-2.5 h-2.5 rounded-full ${c}`}
+                        whileHover={{ scale: 1.4 }}
+                      />
+                    ))}
                   </div>
                   <span className="font-mono text-xs text-muted hidden sm:block">listenlayer.com</span>
                 </div>
@@ -87,36 +91,56 @@ export function Projects() {
                     <p className="text-primary text-xs font-bold tracking-widest uppercase mb-3">{project.subtitle}</p>
                     <p className="text-muted text-sm leading-relaxed">{project.description}</p>
                   </div>
-                  <a
+                  <motion.a
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-primary hover:text-primary-dark transition-colors group self-start"
+                    className="inline-flex items-center gap-2 text-xs font-bold tracking-widest text-primary hover:text-primary-dark transition-colors self-start"
+                    whileHover={{ x: 4 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   >
                     <ExternalLink size={13} /> VISIT SITE
-                  </a>
+                  </motion.a>
                 </div>
 
                 {/* Right panel */}
                 <div className="lg:col-span-3 bg-background p-8 flex flex-col justify-between gap-8">
-                  <ul className="space-y-3">
+                  <motion.ul
+                    className="space-y-3"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }}
+                  >
                     {project.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-3 text-muted text-sm leading-relaxed">
+                      <motion.li
+                        key={b}
+                        className="flex items-start gap-3 text-muted text-sm leading-relaxed"
+                        variants={{ hidden: { opacity: 0, x: -10 }, show: { opacity: 1, x: 0 } }}
+                      >
                         <span className="mt-2 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
                         {b}
-                      </li>
+                      </motion.li>
                     ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-2">
+                  </motion.ul>
+                  <motion.div
+                    className="flex flex-wrap gap-2"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
+                  >
                     {project.tags.map((tag) => (
-                      <span
+                      <motion.span
                         key={tag}
-                        className="px-2.5 py-1 bg-surface-2 border border-border-base text-muted rounded-md text-[10px] font-bold tracking-widest"
+                        className="px-2.5 py-1 bg-surface-2 border border-border-base text-muted rounded-md text-[10px] font-bold tracking-widest cursor-default"
+                        variants={{ hidden: { opacity: 0, scale: 0.85 }, show: { opacity: 1, scale: 1 } }}
+                        whileHover={{ scale: 1.08, borderColor: "rgba(59,130,246,0.5)", color: "var(--primary)" }}
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
 
               </div>
