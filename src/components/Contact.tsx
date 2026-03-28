@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, CheckCircle2, AlertCircle, Github, ExternalLink, FileText } from "lucide-react";
+import { Mail, CheckCircle2, AlertCircle, Github, Linkedin, ExternalLink, FileText } from "lucide-react";
 import Link from "next/link";
 
 export function Contact() {
@@ -100,6 +100,14 @@ export function Contact() {
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-base bg-surface hover:bg-surface-2 text-sm font-semibold text-foreground transition-colors"
               >
                 <Github size={15} /> GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/duyhoang291/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-base bg-surface hover:bg-surface-2 text-sm font-semibold text-foreground transition-colors"
+              >
+                <Linkedin size={15} /> LinkedIn
               </a>
               <a
                 href="https://nguynhoangduy.github.io/portfolio/"

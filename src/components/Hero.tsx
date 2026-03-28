@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MapPin, Mail, Phone, Github, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Phone, Github, Linkedin, ExternalLink } from "lucide-react";
 
 export function Hero() {
   return (
@@ -99,6 +99,14 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-7 py-3 border border-border-base bg-surface hover:bg-surface-2 text-foreground text-sm font-bold rounded-lg transition-all hover:-translate-y-0.5"
           >
             <Github size={16} /> GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/duyhoang291/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3 border border-border-base bg-surface hover:bg-surface-2 text-foreground text-sm font-bold rounded-lg transition-all hover:-translate-y-0.5"
+          >
+            <Linkedin size={16} /> LinkedIn
           </a>
           <a
             href="https://nguynhoangduy.github.io/portfolio/"
