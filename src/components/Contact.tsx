@@ -129,15 +129,15 @@ export function Contact() {
         {/* Footer */}
         <div className="mt-32 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-gray-900 font-bold tracking-tight text-lg">
-            ARCHITECT.DEV
+            NGUYEN HOANG DUY
           </div>
           <div className="flex gap-8 text-sm font-bold tracking-widest text-gray-500">
-            <Link href="https://github.com" className="hover:text-primary transition-colors">GITHUB</Link>
-            <Link href="https://linkedin.com" className="hover:text-primary transition-colors">LINKEDIN</Link>
-            <Link href="#stack" className="hover:text-primary transition-colors">STACK</Link>
+            <Link href="https://github.com/nguynhoangduy" className="hover:text-primary transition-colors">GITHUB</Link>
+            <Link href="https://nguynhoangduy.github.io/portfolio/" className="hover:text-primary transition-colors">PORTFOLIO</Link>
+            <Link href="/resume.pdf" target="_blank" className="hover:text-primary transition-colors">RESUME</Link>
           </div>
           <div className="text-gray-400 text-sm font-medium">
-            © {new Date().getFullYear()} ARCHITECTURAL CANVAS.
+            © {new Date().getFullYear()} NGUYEN HOANG DUY.
           </div>
         </div>
       </div>

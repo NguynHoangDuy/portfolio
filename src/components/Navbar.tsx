@@ -11,7 +11,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="font-bold text-xl tracking-tight">
-          ARCHITECT.DEV
+          NHD.DEV
         </Link>
         
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
@@ -19,8 +19,16 @@ export function Navbar() {
           <Link href="#stack" className="text-gray-600 hover:text-primary transition-colors">Stack</Link>
           <Link href="#articles" className="text-gray-600 hover:text-primary transition-colors">Articles</Link>
           <Link href="#contact" className="text-gray-600 hover:text-primary transition-colors">Contact</Link>
-          <Link 
+          <Link
+            href="https://nguynhoangduy.github.io/portfolio/"
+            target="_blank"
+            className="text-gray-600 hover:text-primary transition-colors"
+          >
+            Portfolio
+          </Link>
+          <Link
             href="/resume.pdf"
+            target="_blank"
             className="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded font-medium transition-colors"
           >
             Resume
@@ -41,8 +49,17 @@ export function Navbar() {
           <Link href="#stack" onClick={() => setIsOpen(false)} className="block font-medium text-gray-800">Stack</Link>
           <Link href="#articles" onClick={() => setIsOpen(false)} className="block font-medium text-gray-800">Articles</Link>
           <Link href="#contact" onClick={() => setIsOpen(false)} className="block font-medium text-gray-800">Contact</Link>
-          <Link 
+          <Link
+            href="https://nguynhoangduy.github.io/portfolio/"
+            target="_blank"
+            onClick={() => setIsOpen(false)}
+            className="block font-medium text-gray-800"
+          >
+            Portfolio
+          </Link>
+          <Link
             href="/resume.pdf"
+            target="_blank"
             onClick={() => setIsOpen(false)}
             className="bg-primary text-white text-center px-6 py-3 rounded-md font-medium mt-4"
           >

@@ -4,15 +4,12 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Quantum Ledger",
-    description: "A high-throughput decentralized ledger engine utilizing Rust-based validators to achieve sub-second finality. Engineered for extreme scalability in sovereign financial networks.",
-    tags: ["RUST", "WEBASSEMBLY", "POSTGRESQL"],
+    title: "ListenLayer",
+    subtitle: "User Behavior Analytics Platform",
+    period: "05/2023 — 03/2026",
+    description: "Large-scale platform at Screen 1 Technology that helps marketers manage and standardize marketing data, eliminate data inconsistencies, and connect data to revenue. Developed responsive UI with React.js, built RESTful APIs with Node.js, implemented real-time data collection and processing, optimized performance with Redis caching and async queue services, and processed large-scale data using BigQuery and PostgreSQL. Developed serverless data pipelines with Cloud Functions and AWS Lambda.",
+    tags: ["REACT.JS", "NODE.JS", "BIGQUERY", "POSTGRESQL", "REDIS", "AWS LAMBDA", "CLOUD FUNCTIONS"],
   },
-  {
-    title: "Nexus API Gateway",
-    description: "Robust API design and secure database management systems. Constructing invisible backbones that power high-concurrency applications.",
-    tags: ["NODE.JS", "REDIS", "AWS"],
-  }
 ];
 
 export function Projects() {
@@ -93,7 +90,9 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{project.title}</h3>
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">{project.title}</h3>
+                {"subtitle" in project && <p className="text-primary font-semibold text-sm mb-1">{(project as {subtitle: string}).subtitle}</p>}
+                {"period" in project && <p className="text-gray-400 text-xs tracking-widest mb-4">{(project as {period: string}).period}</p>}
                 <p className="text-gray-600 leading-relaxed text-lg mb-8">
                   {project.description}
                 </p>

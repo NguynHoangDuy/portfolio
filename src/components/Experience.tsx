@@ -4,17 +4,12 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    period: "2022 — PRESENT",
-    role: "Lead Systems Architect",
-    description: "Spearheading the digital transformation for enterprise-scale financial platforms. Orchestrating microservices architecture and implementing rigorous CI/CD protocols to ensure 99.99% uptime across global nodes.",
-    tags: ["KUBERNETES", "GO", "TERRAFORM", "AWS"],
+    period: "03/2023 — 03/2026",
+    role: "Software Engineer",
+    company: "Screen 1 Technology — Nha Trang, Vietnam",
+    description: "Developed responsive UIs with React.js, HTML and CSS across multiple devices. Designed and built RESTful APIs with Node.js integrated with PostgreSQL. Optimized system performance using Redis (caching) and RabbitMQ (async processing). Worked with cloud services including Google Cloud BigQuery and AWS (Lambda, SQS, S3, DynamoDB).",
+    tags: ["REACT.JS", "NODE.JS", "POSTGRESQL", "REDIS", "RABBITMQ", "AWS", "BIGQUERY"],
   },
-  {
-    period: "2019 — 2022",
-    role: "Senior Backend Engineer",
-    description: "Developed high-performance consumer applications utilizing React and Node.js. Optimized database queries and constructed scalable APIs that handled millions of daily active users with minimal latency.",
-    tags: ["NODE.JS", "REACT", "POSTGRESQL", "REDIS"],
-  }
 ];
 
 export function Experience() {
@@ -73,6 +68,7 @@ export function Experience() {
                   {exp.period}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900">{exp.role}</h3>
+                {"company" in exp && <p className="text-gray-500 text-sm mt-1">{(exp as {company: string}).company}</p>}
               </div>
               <div className="md:w-2/3 md:pl-8 md:border-l border-gray-200">
                 <p className="text-gray-600 leading-relaxed text-lg mb-6 max-w-3xl">

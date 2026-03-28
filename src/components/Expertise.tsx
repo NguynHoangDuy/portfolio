@@ -1,27 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Network, MousePointerClick, Zap } from "lucide-react";
+import { Code2, Network, Cloud, Zap } from "lucide-react";
 
 const capabilities = [
   {
-    title: "Clean Code",
-    description: "Syntactically elegant, maintainable logic that scales with team velocity.",
+    title: "Frontend",
+    description: "Building responsive, user-friendly interfaces with React.js, HTML, and CSS across all devices.",
     icon: Code2,
   },
   {
-    title: "Scalable Systems",
-    description: "Resilient architectures designed to handle growth without compromising speed.",
+    title: "Backend",
+    description: "Designing and developing RESTful APIs with Node.js (Express.js) and Knex.js, integrated with PostgreSQL.",
     icon: Network,
   },
   {
-    title: "User-Centric Design",
-    description: "Human-first interfaces that reduce cognitive load and enhance utility.",
-    icon: MousePointerClick,
+    title: "Cloud & Data",
+    description: "Working with AWS (Lambda, SQS, S3, DynamoDB, API Gateway) and Google Cloud (BigQuery) for data processing at scale.",
+    icon: Cloud,
   },
   {
     title: "Performance",
-    description: "Optimizing core web vitals and reducing latency to the absolute theoretical minimum.",
+    description: "Optimizing systems with Redis caching and RabbitMQ async processing for stability under high load.",
     icon: Zap,
   },
 ];
