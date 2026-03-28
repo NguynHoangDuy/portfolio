@@ -77,7 +77,7 @@ export function Projects() {
               <div className="grid grid-cols-1 lg:grid-cols-5">
 
                 {/* Left panel */}
-                <div className="lg:col-span-2 bg-white dark:bg-surface border-b lg:border-b-0 lg:border-r border-border-base p-8 flex flex-col justify-between gap-8">
+                <div className="lg:col-span-2 bg-surface border-b lg:border-b-0 lg:border-r border-border-base p-8 flex flex-col justify-between gap-8">
                   <div>
                     <img
                       src={project.logo}
