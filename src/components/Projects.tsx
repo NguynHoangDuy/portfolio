@@ -8,7 +8,7 @@ const projects = [
     title: "ListenLayer",
     subtitle: "User Behavior Analytics Platform",
     period: "05/2023 — 03/2026",
-    logo: "/portfolio/listenlayer-logo.svg",
+    logo: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/listenlayer-logo.svg`,
     url: "https://listenlayer.com",
     description:
       "Large-scale platform at Screen 1 Technology that helps marketers manage and standardize marketing data, eliminate data inconsistencies, and connect data to revenue.",

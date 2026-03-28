@@ -118,7 +118,7 @@ export function Contact() {
                 <ExternalLink size={15} /> Portfolio
               </a>
               <a
-                href="/portfolio/resume.pdf"
+                href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border-base bg-surface hover:bg-surface-2 text-sm font-semibold text-foreground transition-colors"
